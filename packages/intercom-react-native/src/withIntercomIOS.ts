@@ -91,15 +91,7 @@ function modifyObjcAppDelegate({
     );
   }
   const initMethodInvocationBlock = `[IntercomModule initialize:`;
-  const registerIntercomPushCode = `
-  // START INTERCOM PUSH
-  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-  [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
-                          completionHandler:^(BOOL granted, NSError *_Nullable error) {
-                          }];
-  [[UIApplication sharedApplication] registerForRemoteNotifications];
-  // END INTERCOM PUSH
-  `;
+  const registerIntercomPushCode = ``;
 
   const registerPushLine = `[IntercomModule setDeviceToken:deviceToken];`;
   const registerPushAnchor = `return [super application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];`;
