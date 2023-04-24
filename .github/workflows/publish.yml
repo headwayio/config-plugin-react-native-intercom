@@ -1,0 +1,23 @@
+name: Publish package to GitHub Packages
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: git checkout -b branch-${{ github.ref_name }}
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@EnhanceTech'
+      - run: YARN_ENABLE_IMMUTABLE_INSTALLS=false ./.yarn/releases/yarn-3.2.4.cjs
+      - run: lerna publish ${{ github.ref_name }} -y --registry https://npm.pkg.github.com
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
