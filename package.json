@@ -11,14 +11,6 @@
     "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/intercom-react-native"
   },
-  "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
-    "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly"
-  },
   "keywords": [
     "react",
     "expo",
